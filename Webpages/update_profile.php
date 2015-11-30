@@ -27,9 +27,6 @@ $usr = $_SESSION['email_address'];
 	}
 	else {
 		//echo "success"
-		//echo "<html><head><title>Success!</title></head><body> <p> Success!</p> </body> </html>";
-		//header('Location: http://web.engr.oregonstate.edu/~osterbit/cs361/cs361_project_b/pages/profile_page.php');
-    	//exit;	
 	}
 	
 ?>
@@ -42,7 +39,7 @@ $usr = $_SESSION['email_address'];
 <body>
 <script>
 	//sleep(10);
-	window.location.replace("http://web.engr.oregonstate.edu/~lagrewj/CS361/ProjectB/pages/update_profile.php");
+	window.location.replace("http://web.engr.oregonstate.edu/~lagrewj/CS361/ProjectB/Webpages/update_profile.php");
 </script>	
 </body>
 </html>
