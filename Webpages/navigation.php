@@ -16,7 +16,7 @@ $navbar=
 							<li><a href='logout.php'>logout</a></li>\n
 							<li><a href='profile_page.php' >profile</a></li>\n
 							<li><a href='donate.php' >Donate</a></li>\n
-							<li><a href='profile_page.php' >otherpage</a></li>\n
+							<li><a href='index.php' >Play Slot Game</a></li>\n
 							<li><a href='profile_page.php' >otherpage</a></li>\n
 
 						</ul>	\n

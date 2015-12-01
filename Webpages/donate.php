@@ -19,17 +19,31 @@
 	<link rel="stylesheet" href="stylesheets/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="stylesheets/bootstrap/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="stylesheets/bootstrap/css/docs.min.css">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Using Lottery to Cure Poverty</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+        
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="jQuery-SlotMachine/dist/jquery.slotmachine.js"></script>
+	<script type="text/javascript" src="donate_script.js"></script>
+</head>
 <body>
 <div class="container">
 	<?php echo $navbar; ?>
-	<h1 class="pageHeader"><?php echo $_SESSION['first_name']; ?>'s Donation Page</br></br></h1>
-	<h3> Current Balance: $<?php echo $_SESSION['balance']; ?><br></br></h3>
+	<h1 class="pageHeader"><?php echo $_SESSION['first_name']; ?>'s Donation Page<br></br></h1>
+	<h1 id="msg"><br></br></h1>
 	 <form method="post" action="donate_transaction.php">
     <fieldset>
 	  <legend>Cause:</legend>
 	  <select name="cause_id"><br><!-- Allows user to select from list of categories  -->
 <?php
-if(!($stmt = $mysqli->prepare("SELECT cause_id, cause_name FROM causes"))){
+if(!($stmt = $mysqli->prepare("SELECT id, cause_name FROM causes"))){
 	echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 }
 

@@ -23,7 +23,7 @@ function processLogin($input_email, $input_pwd, $mysqli) {
 	$password_clean = mysqli_real_escape_string ( $mysqli, $input_pwd);
 
 	$dbquery = "
-		SELECT email_address, first_name, last_name, balance
+		SELECT email_address, first_name, last_name, credits
 		FROM usr_db
 		WHERE email_address='".$email_address_clean."' 
   		AND pass='".$password_clean."'";
@@ -45,7 +45,7 @@ function processLogin($input_email, $input_pwd, $mysqli) {
 			$_SESSION['email_address'] = $db_email;
 			$_SESSION['first_name'] = $db_fname;
 			$_SESSION['last_name'] = $db_lname;
-			$_SESSION['balance'] = $db_balance;
+			$_SESSION['credits'] = $db_credits;
 			$_SESSION['logged_in_status'] = 1;
 		}
 		else $retval = NULL;

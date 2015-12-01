@@ -11,24 +11,24 @@ DROP TABLE `causes`;
 
 /* Creating User Information Table */
 CREATE TABLE usr_db(
-user_id INT(5) NOT NULL AUTO_INCREMENT,
+id INT(5) NOT NULL AUTO_INCREMENT,
 email_address VARCHAR(50) NOT NULL,
 pass VARCHAR(50) NOT NULL,
 first_name VARCHAR(50) NOT NULL,
 last_name VARCHAR(50) NOT NULL,
-balance NUMERIC(10,2) DEFAULT 0, 
-PRIMARY KEY(user_id),
+credits INT(6) DEFAULT 50, 
+PRIMARY KEY(id),
 UNIQUE KEY(email_address)
 )ENGINE=InnoDB;
 
 
 /* To tie users and their skills together and hold their rating for the skill*/
 CREATE TABLE causes(
-cause_id INT(5) NOT NULL AUTO_INCREMENT,
+id INT(5) NOT NULL AUTO_INCREMENT,
 cause_name VARCHAR(50) NOT NULL,
 description TEXT NOT NULL,
-balance NUMERIC(10,2) NOT NULL,
-PRIMARY KEY(cause_id)
+credits INT(6) DEFAULT 0,
+PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
 CREATE TABLE bank_account(
@@ -68,7 +68,7 @@ UNIQUE KEY(transaction_id)
 
 
 /* Inserting dummy data for causes table */
-INSERT INTO causes (cause_name, description, balance) VALUES 
+INSERT INTO causes (cause_name, description, credits) VALUES 
 ('American Heart Association', 'Provides research and awareness to help fight the leading cause of death in America', '0');
 
 
