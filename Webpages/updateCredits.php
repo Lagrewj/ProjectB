@@ -9,11 +9,11 @@ if ($mysqli->connect_errno) {
 	echo "Connection error " . $mysqli->connect_errno . " " . $mysqli->connect_error;
 }
 
-if (!($stmt = $mysqli->prepare("UPDATE usr_db SET credits = ? WHERE id = ?"))) {
+if (!($stmt = $mysqli->prepare("UPDATE usr_db SET credits = ? WHERE email_address = ?"))) {
 	echo "Prepare failed: " . $stmt->errno . " " . $stmt->error;
 }
 
-if (!($stmt->bind_param("ii", $_POST['credits'], $_POST['id']))) {
+if (!($stmt->bind_param("is", $_POST['credits'], $_POST['emailID']))) {
 	echo "Bind failed: " . $stmt->errno . " " . $stmt->error;
 }
 

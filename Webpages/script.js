@@ -12,12 +12,12 @@ $(document).ready(function() {
         url: 'getCredits.php',
         type: 'POST',
         // Send id
-        data: {'id': id},
+        data: {'emailID': emailID},
         success: function(data)
         {
             // Convert to integer
             credits = parseInt(data);
-            $('#msg').text('credits: ' + credits);
+            $('#msg').text('Credits: ' + credits);
         }
     });
 
@@ -158,7 +158,7 @@ $(document).ready(function() {
                         url: 'updateCredits.php',
                         type: 'POST',
                         // Send id and credits
-                        data: {'id': id, 'credits': credits},
+                        data: {'emailID': emailID, 'credits': credits},
                         success: function()
                         {
                             // Reset slot
@@ -179,7 +179,7 @@ $(document).ready(function() {
                         url: 'updateCredits.php',
                         type: 'POST',
                         // Send id and credits
-                        data: {'id': id, 'credits': credits},
+                        data: {'emailID': emailID, 'credits': credits},
                         success: function()
                         {
                             // Reset slot

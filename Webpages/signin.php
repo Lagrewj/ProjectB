@@ -58,7 +58,8 @@ if (isset($_SESSION['logged_in_status'])){
             type: "POST",
             url: "login.php",
             data: formData,
-            success: function( data ) {  
+            success: function( data ) {
+              // console.log(data);
               if (data != 1) {
                 printError();
               }

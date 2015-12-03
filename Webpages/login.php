@@ -32,7 +32,7 @@ function processLogin($input_email, $input_pwd, $mysqli) {
 		//execute
 		if (!$stmt->execute()) { echo "Falied to execute query (".$mysqli->connect_errno.") ".$mysqli->connect_error; }
 		//bind
-		if (!($stmt->bind_result($db_id, $db_email, $db_fname, $db_lname, $db_balance))) { echo "Falied to bind parameters (".$mysqli->connect_errno.") </p>".$mysqli->connect_error;
+		if (!($stmt->bind_result($db_id, $db_email, $db_fname, $db_lname, $db_credits))) { echo "Falied to bind parameters (".$mysqli->connect_errno.") </p>".$mysqli->connect_error;
 		}
 		//evaluate
 		$result = 0;
@@ -52,7 +52,7 @@ function processLogin($input_email, $input_pwd, $mysqli) {
 		else $retval = NULL;
 		$stmt->close();
 
-	return $retval;
+	echo $retval;
 }
 
 ?>

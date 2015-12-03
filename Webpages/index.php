@@ -1,16 +1,16 @@
 <?php
-	session_start();
-	//Turn on error reporting
-	ini_set('display_errors', 'On');
-	
-	if(!isset($_SESSION['email_address']) && !isset($_SESSION['logged_in_status'])) {
-		header("Location: signin.php");
-		exit();
-	}
-	
-	//Connects to the database
-	require "./db_connect.php";
-	require "./navigation.php";
+    session_start();
+    //Turn on error reporting
+    ini_set('display_errors', 'On');
+    
+    if(!isset($_SESSION['email_address']) && !isset($_SESSION['logged_in_status'])) {
+        header("Location: signin.php");
+        exit();
+    }
+    
+    //Connects to the database
+    require "./db_connect.php";
+    require "./navigation.php";
 ?>
 <!-- Sources Used: -->
 <!-- https://github.com/josex2r/jQuery-SlotMachine -->
@@ -31,19 +31,19 @@
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="jQuery-SlotMachine/dist/jquery.slotmachine.js"></script>
         <script type="text/javascript" src="script.js"></script>
-		<script type="text/javascript">
+        <script type="text/javascript">
             var $_SESSION = <?php echo json_encode($_SESSION); ?>;
-            var id = $_SESSION['id']
+            var emailID = $_SESSION['email_address']
             
-            console.log($_SESSION['id']);  
-		</script>
+            // console.log(emailID);  
+        </script>
     </head>
 
     <body>
-	<div class="container">
-	<?php echo $navbar; ?>
-	<h1 class="pageHeader">Welcome! <?php echo $_SESSION['first_name']; ?></h1>
-	</div>
+    <div class="container">
+    <?php echo $navbar; ?>
+    <h1 class="pageHeader">Welcome! <?php echo $_SESSION['first_name']; ?></h1>
+    </div>
         <div class="line" style="padding-top:50px;">
             
             <div class="content" style="text-align: center; background: url('./img/machine.png') no-repeat 50% 120px; height: 500px;">
