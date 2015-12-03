@@ -26,7 +26,7 @@
 	  }
 	  else {
 				//PREPARE THE STATEMENT TO ENTER INFO INTO TABLE
-		if (!($stmt = $mysqli->prepare("INSERT INTO usr_db(email_address, password, first_name, last_name) VALUES (?, ?, ?, ?)"))) {
+		if (!($stmt = $mysqli->prepare("INSERT INTO usr_db(email_address, pass, first_name, last_name) VALUES (?, ?, ?, ?)"))) {
 			echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 		}
 		//BIND VARIABLES TO BE INSERTED INTO TABLE

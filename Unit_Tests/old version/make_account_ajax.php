@@ -29,7 +29,7 @@ if (array_key_exists("fname", $_POST)
 		$create_query = "
 		INSERT INTO usr_db(
 			email_address, 
-			password, 
+			pass, 
 			first_name, 
 			last_name)
 		VALUES (?, ?, ?, ?)

@@ -31,6 +31,12 @@
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="jQuery-SlotMachine/dist/jquery.slotmachine.js"></script>
         <script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript">
+            var $_SESSION = <?php echo json_encode($_SESSION); ?>;
+            var id = $_SESSION['id']
+            
+            console.log($_SESSION['id']);  
+		</script>
     </head>
 
     <body>

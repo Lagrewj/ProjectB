@@ -23,16 +23,16 @@ function processLogin($input_email, $input_pwd, $mysqli) {
 	$password_clean = mysqli_real_escape_string ( $mysqli, $input_pwd);
 
 	$dbquery = "
-		SELECT id, email_address, first_name, last_name, credits
+		SELECT email_address, first_name, last_name, balance
 		FROM usr_db
 		WHERE email_address='".$email_address_clean."' 
-  		AND password='".$password_clean."'";
+  		AND pass='".$password_clean."'";
 		//prepare
 		if (!($stmt = $mysqli->prepare($dbquery))) {echo "Falied to prepare query (".$mysqli->connect_errno.") ".$mysqli->connect_error; }
 		//execute
 		if (!$stmt->execute()) { echo "Falied to execute query (".$mysqli->connect_errno.") ".$mysqli->connect_error; }
 		//bind
-		if (!($stmt->bind_result($db_id, $db_email, $db_fname, $db_lname, $db_balance))) { echo "Falied to bind parameters (".$mysqli->connect_errno.") </p>".$mysqli->connect_error;
+		if (!($stmt->bind_result($db_email, $db_fname, $db_lname, $db_balance))) { echo "Falied to bind parameters (".$mysqli->connect_errno.") </p>".$mysqli->connect_error;
 		}
 		//evaluate
 		$result = 0;
@@ -42,11 +42,10 @@ function processLogin($input_email, $input_pwd, $mysqli) {
 		if ($result == 1)
 		{
 			$retval = 1;
-			$_SESSION['id'] = $db_id;
 			$_SESSION['email_address'] = $db_email;
 			$_SESSION['first_name'] = $db_fname;
 			$_SESSION['last_name'] = $db_lname;
-			$_SESSION['credits'] = $db_credits;
+			$_SESSION['balance'] = $db_balance;
 			$_SESSION['logged_in_status'] = 1;
 		}
 		else $retval = NULL;

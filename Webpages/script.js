@@ -12,7 +12,7 @@ $(document).ready(function() {
         url: 'getCredits.php',
         type: 'POST',
         // Send id
-        data: {'id': 1},
+        data: {'id': id},
         success: function(data)
         {
             // Convert to integer
@@ -158,7 +158,7 @@ $(document).ready(function() {
                         url: 'updateCredits.php',
                         type: 'POST',
                         // Send id and credits
-                        data: {'id': 1, 'credits': credits},
+                        data: {'id': id, 'credits': credits},
                         success: function()
                         {
                             // Reset slot
@@ -179,7 +179,7 @@ $(document).ready(function() {
                         url: 'updateCredits.php',
                         type: 'POST',
                         // Send id and credits
-                        data: {'id': 1, 'credits': credits},
+                        data: {'id': id, 'credits': credits},
                         success: function()
                         {
                             // Reset slot

@@ -11,7 +11,7 @@ require "./db_connect.php";
 	
 */
 	function add_user($email_address, $password, $fname, $lname, $mysqli) {
-		$dbquery = "INSERT INTO usr_db (email_address, password, first_name, last_name) VALUES (".$email_address.",".$password.",".$fname.",".$lname.")";
+		$dbquery = "INSERT INTO usr_db (email_address, pass, first_name, last_name) VALUES (".$email_address.",".$password.",".$fname.",".$lname.")";
 		$_SESSION['email_address'] = $email_address;
 		
 		//prepare

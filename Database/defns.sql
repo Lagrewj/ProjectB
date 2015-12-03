@@ -13,7 +13,7 @@ DROP TABLE `causes`;
 CREATE TABLE usr_db(
 id INT(5) NOT NULL AUTO_INCREMENT,
 email_address VARCHAR(50) NOT NULL,
-pass VARCHAR(50) NOT NULL,
+password VARCHAR(50) NOT NULL,
 first_name VARCHAR(50) NOT NULL,
 last_name VARCHAR(50) NOT NULL,
 credits INT(6) DEFAULT 50, 
