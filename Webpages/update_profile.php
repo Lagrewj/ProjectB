@@ -10,15 +10,15 @@ if (!(isset($_SESSION['logged_in_status']))){
 }
 $usr = $_SESSION['email_address'];
 	
-	$experience = isset($_POST["experience"])?trim($_POST["experience"]):"";
-	$bio = isset($_POST["bio"])?trim($_POST["bio"]):"";
+	$first_name = isset($_POST["first_name"])?trim($_POST["first_name"]):"";
+	$last_name = isset($_POST["last_name"])?trim($_POST["last_name"]):"";
 
 	//PREPARE THE STATEMENT TO ENTER INFO INTO TABLE
-	if (!($stmt = $mysqli->prepare("UPDATE usr_db SET experience = ?, bio = ? WHERE email_address = ?"))) {
+	if (!($stmt = $mysqli->prepare("UPDATE usr_db SET first_name = ?, last_name = ? WHERE email_address = ?"))) {
 		echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 	}
 	//BIND VARIABLES TO BE INSERTED INTO TABLE
-	if (!$stmt->bind_param("sss", $experience, $bio, $usr)) {
+	if (!$stmt->bind_param("sss", $first_name, $last_name, $usr)) {
 		echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 	}
 	//EXECUTE

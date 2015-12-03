@@ -37,13 +37,23 @@ if (array_key_exists("fname", $_POST)
 		if (!($stmt = $mysqli->prepare($create_query))) { echo "Falied to prepare query (".$mysqli->connect_errno.") ".$mysqli->connect_error;}
 		if (!($stmt->bind_param('ssss', $email_address, $password, $first_name, $last_name))) {echo "<script>alert('failed to bind parameters')</script>";}
 		if (!$stmt->execute()) {echo "Falied to execute query (".$mysqli->connect_errno.") ".$mysqli->connect_error;}
-
-		//set session email_address and logged in status
-		$_SESSION['email_address'] = $email_address;
-		$_SESSION['first_name'] = $first_name;
-		$_SESSION['last_name'] = $last_name;
-		$_SESSION['logged_in_status'] = 1;
-		//go to landing page
+		
+		$dbquery = "
+		SELECT id, email_address, first_name, last_name, credits
+		FROM usr_db";
+		//prepare
+		if (!($stmt = $mysqli->prepare($dbquery))) {echo "Falied to prepare query (".$mysqli->connect_errno.") ".$mysqli->connect_error; }
+		//execute
+		if (!$stmt->execute()) { echo "Falied to execute query (".$mysqli->connect_errno.") ".$mysqli->connect_error; }
+		//bind
+		if (!($stmt->bind_result($id, $email_address, $first_name, $last_name, $credits))) { echo "Falied to bind parameters (".$mysqli->connect_errno.") </p>".$mysqli->connect_error;
+		}
+			$_SESSION['id'] = $id;
+			$_SESSION['email_address'] = $email_address;
+			$_SESSION['first_name'] = $first_name;
+			$_SESSION['last_name'] = $last_name;
+			$_SESSION['credits'] = $credits;
+			$_SESSION['logged_in_status'] = 1;
 		echo "1";
 
 	}

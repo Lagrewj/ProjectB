@@ -39,8 +39,8 @@ function processLogin($input_email, $input_pwd, $mysqli) {
 		while($stmt->fetch()) {
 			$result += 1;
 		}
-		if ($result == 1)
-		{
+		//if ($result == 1)
+		//{
 			$retval = 1;
 			$_SESSION['id'] = $db_id;
 			$_SESSION['email_address'] = $db_email;
@@ -48,8 +48,8 @@ function processLogin($input_email, $input_pwd, $mysqli) {
 			$_SESSION['last_name'] = $db_lname;
 			$_SESSION['credits'] = $db_credits;
 			$_SESSION['logged_in_status'] = 1;
-		}
-		else $retval = NULL;
+		//}
+		//else $retval = NULL;
 		$stmt->close();
 
 	return $retval;

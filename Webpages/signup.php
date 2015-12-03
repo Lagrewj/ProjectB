@@ -27,6 +27,7 @@ require "./db_connect.php";
 
 	if(isset($_POST['email_address']) && isset($_POST['password']) && isset($_POST['fname']) && isset($_POST['lname'])) {
 	//create php variables from post array
+
 		$email_address = $_POST['email_address'];
 		$password = $_POST['password'];
 		$fname = $_POST['fname'];
