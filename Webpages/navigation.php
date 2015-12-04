@@ -17,7 +17,7 @@ $navbar=
 							<li><a href='profile_page.php' >profile</a></li>\n
 							<li><a href='donate.php' >Donate</a></li>\n
 							<li><a href='index.php' >Play Slot Game</a></li>\n
-							<li><a href='profile_page.php' >otherpage</a></li>\n
+							<li><a href='deposit.php' >Deposit</a></li>\n
 
 						</ul>	\n
 					</div>\n
