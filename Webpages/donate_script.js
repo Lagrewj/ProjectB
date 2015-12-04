@@ -12,12 +12,12 @@ $(document).ready(function() {
         url: 'getCredits.php',
         type: 'POST',
         // Send id
-        data: {'id': 1},
+        data: {'emailID': emailID},
         success: function(data)
         {
             // Convert to integer
             credits = parseInt(data);
-            $('#msg').text('credits: ' + credits);
+            $('#msg').text('Credits: ' + credits);
         }
     });
 });

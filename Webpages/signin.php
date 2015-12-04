@@ -22,17 +22,15 @@ if (isset($_SESSION['logged_in_status'])){
 
 </head>
 <body>
-	<form id="signin" class="form-signin" role="form" action="signin.php?" method="post">
+	<form id="signin" class="form-signin" role="form" action="signin.php?check=1" method="post">
         <div id="badLoginMessage">
         </div>
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="text" name="email_address" class="form-control" placeholder="email" required autofocus>
         <input type="password" name="password" class="form-control" placeholder="password" required>
         <button class="btn btn-lg btn-primary btn-block" id="signmein">Sign in</button>
-		<a class="small" href="./signup.php">First time? Register here!</a>
-		</form>
-        
-      
+        <a class="small" href="./signup.php">First time? Register here!</a>
+      </form>
 
     </div> <!-- /container -->
 
@@ -61,13 +59,12 @@ if (isset($_SESSION['logged_in_status'])){
             url: "login.php",
             data: formData,
             success: function( data ) {
-					if (data == 1) {
-						alert("now signing in");
-						window.location.replace("./profile_page.php");
-					}
-					else {
-						printError();
-					} 
+              // console.log(data);
+              if (data != 1) {
+                printError();
+              }
+              else
+                window.location.replace('./donate.php');
             },
             dataType: "html"
           });

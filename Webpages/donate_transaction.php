@@ -14,10 +14,10 @@
 if(!$mysqli || $mysqli->connect_errno){
 	echo "Connection error " . $mysqli->connect_errno . " " . $mysqli->connect_error;
 	}	
-if(!($stmt = $mysqli->prepare("UPDATE causes SET credits = credits + ? WHERE id = ?"))){
+if(!($stmt = $mysqli->prepare("UPDATE causes, usr_db SET causes.credits = causes.credits + ?, usr_db.credits = usr_db.credits - ? WHERE causes.id = ? AND usr_db.email_address = ?"))){
 	echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 }
-if(!($stmt->bind_param("ii",$_POST['donation'],$_POST['id']))){
+if(!($stmt->bind_param("iiis",$_POST['donation'],$_POST['donation'],$_POST['id'],$_SESSION['email_address']))){
 	echo "Bind failed: "  . $stmt->errno . " " . $stmt->error;
 }
 if(!$stmt->execute()){

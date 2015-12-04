@@ -31,7 +31,13 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="jQuery-SlotMachine/dist/jquery.slotmachine.js"></script>
-	<script type="text/javascript" src="donate_script.js"></script>
+		<script type="text/javascript" src="donate_script.js"></script>
+        <script type="text/javascript">
+            var $_SESSION = <?php echo json_encode($_SESSION); ?>;
+            var emailID = $_SESSION['email_address']
+            
+            // console.log(emailID);  
+        </script>
 </head>
 <body>
 <div class="container">
@@ -41,7 +47,7 @@
 	 <form method="post" action="donate_transaction.php">
     <fieldset>
 	  <legend>Cause:</legend>
-	  <select name="cause_id"><br><!-- Allows user to select from list of categories  -->
+	  <select name="id"><br><!-- Allows user to select from list of categories  -->
 <?php
 if(!($stmt = $mysqli->prepare("SELECT id, cause_name FROM causes"))){
 	echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
