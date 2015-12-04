@@ -3,17 +3,14 @@
 
 	ini_set('display_errors', 'On');
 
-	// if(!isset($_SESSION['logged_in_status'])) {
-	// 	header("Location: signin.php");
-	// 	exit();
-	// }
+  if(!isset($_SESSION['logged_in_status'])) {
+	 	header("Location: signin.php");
+	 	exit();
+	}
 
  	require "./db_connect.php";
  	require "./navigation.php";
 
-// 	echo $navbar;
-
-echo "Session email: " . $_SESSION['email_address'];
 if(!$mysqli || $mysqli->connect_errno){
  	echo "Connection error " . $mysqli->connect_errno . " " . $mysqli->connect_error;
 }	
