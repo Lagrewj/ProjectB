@@ -100,5 +100,37 @@
 					<input type="submit" value="Deposit" />
 				</fieldset>
 			</form>
+
+			<form method="post" action="withdrawal_transaction.php">
+				<fieldset>
+					<legend>Withdrawal Amount:</legend>
+					$<input type="number" placeholder="0.00" name="withdrawal" />
+
+					Choose Account: <select name="account_info">
+					<?php
+
+					if(!($stmt = $mysqli->prepare("SELECT bank_name FROM bank_account WHERE user_id = ?"))) {
+						echo "Prepare failed: " . $stmt->errno . " " . $stmt->error;
+					}
+
+					$stmt->bind_param("i", $id);
+
+					if(!$stmt->execute()) {
+						echo "Execute failed: " . $mysqli->connect_errno . " " . $mysqli->connect_error;
+					}
+					if(!$stmt->bind_result($bank_name)) {
+						echo "Bind failed: " . $mysqli->connect_errno . " " . $mysqli->connect_error;
+					}
+
+					while($stmt->fetch()) {
+						echo '<option value=" ' . $bank_name . ' ">' . $bank_name . '</option>\n';
+					}
+					?>
+					</select>
+					<br><br>
+					<input type="submit" value="Withdraw" />
+				</fieldset>
+			</form>
+			<br><br>
 	</body>
 </html>
