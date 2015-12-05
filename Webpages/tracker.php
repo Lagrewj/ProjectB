@@ -45,19 +45,35 @@
 	<h1 class="pageHeader">Money Tracker Page<br></br></h1>
 
 <?php
-if(!($stmt = $mysqli->prepare("SELECT id, cause_name FROM causes"))){
+if(!($stmt = $mysqli->prepare("SELECT id, cause_name, credits, goal FROM causes"))){
 	echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
 }
 
 if(!$stmt->execute()){
 	echo "Execute failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 }
-if(!$stmt->bind_result($id, $pname)){
+if(!$stmt->bind_result($id, $cname, $credits, $goal)){
 	echo "Bind failed: "  . $mysqli->connect_errno . " " . $mysqli->connect_error;
 }
+
+echo "<table class='table'>
+		<tr>
+			<th>Charity</th>
+				<th>Total Received</th>
+				<th>Goal Amount</th>
+				<th>Percentage of Goal Achieved</th>
+			</tr>";
 while($stmt->fetch()){
-	echo $pname;
+	$percent = $credits/$goal;
+	$percent = number_format((float)$percent, 2, '.', '');
+	echo "<tr>
+			<td>$cname</td>
+			<td>$credits</td>
+			<td>$goal</td>
+			<td>$percent%</td>
+		</tr>";
 }
+echo "</table>";
 $stmt->close();
 ?>
 	
