@@ -25,6 +25,12 @@
 		<script src="stylesheets/bootstrap/js/jquery-1.11.0.min.js"></script>
 		<script src="stylesheets/bootstrap/js/bootstrap.min.js"></script>	
 		<script type="text/javascript" src="donate_script.js"></script>
+        <script type="text/javascript">
+            var $_SESSION = <?php echo json_encode($_SESSION); ?>;
+            var emailID = $_SESSION['email_address']
+            
+            // console.log(emailID);  
+        </script>
 	</head>
 	<body>
 	<div class="container">
@@ -32,7 +38,7 @@
 			echo $navbar; ?>
 
 			<h1 class="pageHeader"><?php echo $_SESSION['first_name']; ?>'s Deposit Page</br></br></h1>
-			<h3> Current Balance: $<?php echo $_SESSION['credits']; ?><br></br></h3>
+			<h1 id="msg"><br></br></h1>
 
 			<form method="post" action="save_bank_account.php">
 				<fieldset>
