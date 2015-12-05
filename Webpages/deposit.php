@@ -32,7 +32,7 @@
 			echo $navbar; ?>
 
 			<h1 class="pageHeader"><?php echo $_SESSION['first_name']; ?>'s Deposit Page</br></br></h1>
-			<h3> Current Balance: $<?php echo $_SESSION['balance']; ?><br></br></h3>
+			<h3> Current Balance: $<?php echo $_SESSION['credits']; ?><br></br></h3>
 			<form method="post" action="deposit_transaction.php">
 				<fieldset>
 					<legend>Deposit Amount:</legend>

@@ -18,7 +18,7 @@ if(!$mysqli || $mysqli->connect_errno){
  	echo "Connection error " . $mysqli->connect_errno . " " . $mysqli->connect_error;
 }	
 
- 	if(!($stmt = $mysqli->prepare("UPDATE `usr_db` SET `balance`=`balance` + ? WHERE `email_address` = ?"))) {
+ 	if(!($stmt = $mysqli->prepare("UPDATE `usr_db` SET `credits`=`credits` + ? WHERE `email_address` = ?"))) {
  		echo "Prepare failed: " . $stmt->errno . " " . $stmt->error;
  	}
 
@@ -32,5 +32,5 @@ if(!$stmt->execute()){
 	echo "Successful Deposit!";	
 }
 
-$_SESSION['balance'] = $_SESSION['balance'] + $_POST['deposit'];
+$_SESSION['credits'] = $_SESSION['credits'] + $_POST['deposit'];
 ?>
