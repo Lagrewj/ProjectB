@@ -52,7 +52,7 @@
 					<input type="number" name="account_number" min="10000000" placeholder="Account Number" /><br><br>
 					<?php
 						// Get user id using the email address
-						if(!($stmt = $mysqli->prepare("SELECT user_id FROM usr_db WHERE email_address = ?"))) {
+						if(!($stmt = $mysqli->prepare("SELECT id FROM usr_db WHERE email_address = ?"))) {
 							echo "Prepare failed: " . $stmt->errno . " " . $stmt->error;
 						}
 
