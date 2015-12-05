@@ -10,24 +10,58 @@
 
  	require "./db_connect.php";
  	require "./navigation.php";
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<form method="post" action="deposit.php" id="successForm">
+			<fieldset border="0">
 
+<?php
 if(!$mysqli || $mysqli->connect_errno){
  	echo "Connection error " . $mysqli->connect_errno . " " . $mysqli->connect_error;
 }	
 
- 	if(!($stmt = $mysqli->prepare("UPDATE `usr_db` SET `balance`=`balance` - ? WHERE `email_address` = ?"))) {
+ 	if(!($stmt = $mysqli->prepare("UPDATE `usr_db` SET `credits`=`credits` - ? WHERE `email_address` = ?"))) {
  		echo "Prepare failed: " . $stmt->errno . " " . $stmt->error;
+ 	}
+
+ 	if(!($accstmt = $mysqli->prepare("UPDATE `bank_account` SET `credits`=`credits` + ? WHERE `bank_account_id` = ?"))) {
+ 		echo "Prepare failed: " . $accstmt->errno . " " . $accstmt->error;
  	}
 
  	if(!($stmt->bind_param("is", $_POST['withdrawal'], $_SESSION['email_address']))) {
  		echo "Bind failed: " . $stmt->errno . " " . $stmt->error;
  	}
 
-if(!$stmt->execute()){
+ 	if(!($accstmt->bind_param("ii", $_POST['withdrawal'], $_POST['account_info']))) {
+ 		echo "Bind failed: " . $accstmt->errno . " " . $accstmt->error;
+ 	}
+
+if(!$stmt->execute()) {
 	echo "Execute failed: "  . $stmt->errno . " " . $stmt->error;
+	echo '<input type="hidden" name="withdrawalSuccess" value="no">';
+} else if(!$accstmt->execute()) {
+	echo "Execute failed: " . $accstmt->errno . " " . $accstmt->error;
+	echo '<input type="hidden" name="withdrawalSuccess" value="no">';
 } else {
-	echo "Successful Withdrawal!";	
+	echo '<input type="hidden" name="withdrawalSuccess" value="yes">';
+
+?>
+
+			</fieldset>
+		</form>
+	</body>
+</html>
+
+<script type="text/javascript">
+	document.getElementById('successForm').submit();
+</script>
+
+<?php
 }
 
-$_SESSION['balance'] = $_SESSION['balance'] - $_POST['withdrawal'];
+$_SESSION['credits'] = $_SESSION['credits'] - $_POST['withdrawal'];
 ?>
