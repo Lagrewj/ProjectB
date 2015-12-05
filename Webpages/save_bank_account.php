@@ -10,7 +10,16 @@
 
  	require "./db_connect.php";
  	require "./navigation.php";
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<form method="post" action="deposit.php" id="successForm">
+			<fieldset border="0">
 
+<?php
 	if(!$mysqli || $mysqli->connect_errno){
 	 	echo "Connection error " . $mysqli->connect_errno . " " . $mysqli->connect_error;
 	}	
@@ -25,8 +34,20 @@
 
 	if(!$stmt->execute()){
 		echo "Execute failed: "  . $stmt->errno . " " . $stmt->error;
+		echo '<input type="hidden" name="withdrawalSuccess" value="no">';
 	} else {
-		echo "Account added successfully!";	
-	}
+		echo '<input type="hidden" name="accountSuccess" value="yes">';
+?>
 
+			</fieldset>
+		</form>
+	</body>
+</html>
+
+<script type="text/javascript">
+	document.getElementById('successForm').submit();
+</script>
+
+<?php
+	}
 ?>
