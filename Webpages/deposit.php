@@ -68,7 +68,6 @@
 				</fieldset>
 			</form>
 
->>>>>>> 1062f60262437796c07813b36658eb5b31f7f10e
 			<form method="post" action="deposit_transaction.php">
 				<fieldset>
 					<legend>Deposit Amount:</legend>
