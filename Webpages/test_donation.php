@@ -17,7 +17,7 @@
 
         <!-- QUnit Testing -->
         <script type="text/javascript" src="qunit/qunit/qunit.js"></script>
-        <script type="text/javascript" src="test_slots.js"></script>
+        <script type="text/javascript" src="test_donation.js"></script>
     </head>
 
     <body>
