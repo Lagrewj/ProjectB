@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Test Money Tracker</title>
+        <title>Test Slot Game</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
 
@@ -17,7 +17,7 @@
 
         <!-- QUnit Testing -->
         <script type="text/javascript" src="qunit/qunit/qunit.js"></script>
-        <script type="text/javascript" src="test_tracker.js"></script>
+        <script type="text/javascript" src="test_slots.js"></script>
     </head>
 
     <body>
@@ -25,5 +25,5 @@
         <div id="qunit-fixture"></div>
 
 <?php
-    require "./tracker.php";
+    require "./index.php";
 ?>
