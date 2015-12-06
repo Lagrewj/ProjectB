@@ -1,2 +1,2 @@
 php_value session.save_handler files
-php_value session.save_path "/nfs/stak/students/c/channa/sessions"
+php_value session.save_path "/nfs/stak/students/l/lagrewj/sessions"
