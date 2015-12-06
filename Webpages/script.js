@@ -113,7 +113,7 @@ $(document).ready(function() {
         // Check for insufficient credits
         if (credits == 0 || credits < bet) {
             $('#slotMachineButtonShuffle').prop('disabled', true);
-            alert('Insufficient credits. Please see deposit money.');
+            alert('Insufficient credits. Please deposit money.');
         }
         // If machine4.active is not zero, then slot1 has stopped
         // Prevent users from clicking on spin again before spin has completed
