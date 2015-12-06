@@ -27,7 +27,8 @@ CREATE TABLE causes(
 id INT(5) NOT NULL AUTO_INCREMENT,
 cause_name VARCHAR(50) NOT NULL,
 description TEXT NOT NULL,
-credits INT(6) DEFAULT 0,
+credits INT(6) DEFAULT 50,
+goal INT(6) NOT NULL DEFAULT 10000,
 PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
@@ -38,9 +39,9 @@ bank_name VARCHAR(50) NOT NULL,
 account_type VARCHAR(50) NOT NULL,
 bank_routing_number INT(9) NOT NULL,
 bank_account_number INT(10) NOT NULL,
-balance NUMERIC(10,2) NOT NULL,
+credits NUMERIC(10,2) NOT NULL,
 PRIMARY KEY(bank_account_id),
-FOREIGN KEY(user_id) REFERENCES usr_db(user_id),
+FOREIGN KEY(user_id) REFERENCES usr_db(id),
 UNIQUE KEY(user_id)
 )ENGINE=InnoDB;
 
@@ -70,6 +71,3 @@ UNIQUE KEY(transaction_id)
 /* Inserting dummy data for causes table */
 INSERT INTO causes (cause_name, description, credits) VALUES 
 ('American Heart Association', 'Provides research and awareness to help fight the leading cause of death in America', '0');
-
-
-
