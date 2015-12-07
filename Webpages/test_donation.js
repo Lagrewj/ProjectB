@@ -25,13 +25,13 @@ asyncTest('Credits test', function() {
 });
 
 //Check that donate properly subtracts credits from usr_db
-asyncTest('Test Donatation', function() {
-		expect(1); // Number of async tests to run
+asyncTest('Test Donation', function() {
+	expect(1); // Number of async tests to run
 		
 	var credits;
     var donation = parseInt($('#donation').val());
 
-    $('#donate!').trigger('click');
+    $('#submit').trigger('click');
 
     // Set timeout to make sure that trigger call completes before Ajax call
     setTimeout(function() {
@@ -44,6 +44,9 @@ asyncTest('Test Donatation', function() {
             {
                 // Convert to integer
                 credits = parseInt(data);
+                // Credits before donation
+                before = credits + donation;
+
                 equal(credits, before - donation, 'Credits should be decremented by donation');
                 // Continue test execution
                 start();
